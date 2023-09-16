@@ -19,12 +19,15 @@ public class C_Resultado {
 
 
     @PostMapping("/")
-    public String listaNumeros(@RequestParam("quantidade") Integer quantidade, @RequestParam("inicio") Integer inicio, @RequestParam("fim") Integer fim, Model model) {
+    public String listaNumeros(@RequestParam("quantidade") int quantidade, @RequestParam("inicio") int inicio, @RequestParam("fim") int fim, @RequestParam("ordemCres") boolean ordemCres, @RequestParam("repeticao") boolean repeticao, Model model) {
 
-        //retornar vetor
-        Integer[] vetorNumeros = S_Sortear.sortearNumeros(quantidade, inicio, fim);
-        model.addAttribute("numeros", vetorNumeros);
-
+        if (repeticao == true) { // enviar os booleans como parametros para o service
+            int[] vetorNumeros = S_Sortear.sortearNumeros(quantidade, inicio, fim);
+            model.addAttribute("numeros", vetorNumeros);
+        } else {
+            int[] vetorNumerosRep = S_Sortear.sortearNumerosSemRepetir(quantidade,inicio, fim);
+            model.addAttribute("numeros", vetorNumerosRep);
+        }
         return "/resultado";
     }
 

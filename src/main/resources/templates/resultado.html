@@ -19,12 +19,12 @@
 <body>
     <div class="container text-center">
         <div id="errorMessage"></div>
-        <form action="/resultado" method="post" class="text-center mx-auto">
+        <form  class="text-center mx-auto">
             <h1 class="">
                 Resultado do Sorteio:
             </h1>
             <div class="row resultadoDiv text-center">
-                <ul class="d-flex justify-content-center m-10 align-middle list-unstyled" id="resultado">
+                <ul class="d-flex flex-wrap m-2 align-middle list-unstyled text-wrap" id="resultado">
                     <li class="d-flex justify-content-center align-items-center rounded-circle bg-success text-white "
                         style="width: 45px !important;
   height: 45px !important;
@@ -33,18 +33,7 @@ margin: 10px !important;
                     </li>
                 </ul>
 
-<!--                <div id="resultados" class="row mt-5">-->
-<!--                    <div class="col-sm-6 text-center">-->
-<!--                        <table class="table table-striped table-bordered table-condensed table-hover">-->
-<!--                            <h4>Resultado do Sorteio</h4>-->
-<!--                            <tbody>-->
-<!--                            <tr th:each="numero :${numeros}">-->
-<!--                                <td th:text="${numero}"></td>-->
-<!--                            </tr>-->
-<!--                            </tbody>-->
-<!--                        </table>-->
-<!--                    </div>-->
-<!--            </div>-->
+
             <div class="row m-auto mt-5">
                 <div class="text-center">
                     <p class="h3 v">Informações do Sorteio</p>
