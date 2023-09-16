@@ -41,12 +41,12 @@ margin: 10px !important;
                 <div class="row mt-5">
                     <div class="col mx-center">
                         <span class="text-gray-400 text-md">Data do Sorteio:</span><br />
-                        <span class="">14 de set. de 2023, 09:31</span><br />
+                        <span class="" th:text="${dataHora}">14 de set. de 2023, 09:31</span><br />
                         <small>(GMT-3, Horário de Brasilia)</small>
                     </div>
                     <div class="col mx-center">
                         <span class="text-gray-400 text-md">Quantidade Sorteada:</span><br />
-                        <span class="text-md md:text-3xl">4</span>
+                        <span class="text-md md:text-3xl" th:text="${quantidade}">4</span>
                     </div>
                     <div class="col mx-center">
                         <span class="text-gray-400">Sorteio entre</span><br />

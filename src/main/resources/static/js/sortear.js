@@ -3,14 +3,16 @@ $(document).ready(function () { //$('html').html(data)
     var quantidade = $("#quantidade").val();
     var inicio = $("#inicio").val();
     var fim = $("#fim").val();
+
     
     var ordemCres = $("#ordemCres").is(":checked");
     var repeticao = $("#repeticao").is(":checked");
-
+    ;
+  
     $.ajax({
       type: "POST", // Tipo da requisição
       url: "/", // Caminho para envio da requisição
-      data: { number: quantidade, number: inicio, number: fim, boolean: ordemCres, boolean: repeticao},
+      data: { quantidade: quantidade, inicio: inicio, fim: fim, ordemCres: ordemCres, repeticao: repeticao},
       success: function (data) {
         $("#errorMessage").text("");
         if (data.sucesso) {

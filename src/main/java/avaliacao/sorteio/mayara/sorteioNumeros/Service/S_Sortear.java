@@ -11,7 +11,7 @@ import java.util.*;
 public class S_Sortear {
 
 
-    public static int[] sortearNumeros(int quantidade, int inicio, int fim) {
+    public static int[] sortearNumeros(int quantidade, int inicio, int fim, boolean ordenar) {
         int[] vetorNumeros = new int[quantidade]; // Cria um vetor de tamanho 5 para armazenar os números sorteados
         Random random = new Random();
 
@@ -20,10 +20,14 @@ public class S_Sortear {
             vetorNumeros[i] = numeroSorteado;
         }
 
+        if (ordenar== true){
+            vetorNumeros = ordenarNumeros(vetorNumeros);
+        }
+
         return vetorNumeros;
     }
 
-    public static int[] sortearNumerosSemRepetir(int quantidade, int inicio, int fim) {
+    public static int[] sortearNumerosSemRepetir(int quantidade, int inicio, int fim, boolean ordenar) {
         if (quantidade > fim) {
             throw new IllegalArgumentException("A quantidade de números a serem sorteados não pode ser maior que o limite.");
         }
@@ -42,6 +46,12 @@ public class S_Sortear {
         for (int numero : numerosSorteados) {
             vetorNumeros[index++] = numero;
         }
+
+        if (ordenar == true){
+            vetorNumeros = ordenarNumeros(vetorNumeros);
+        }
+
+
 
         return vetorNumeros;
     }
