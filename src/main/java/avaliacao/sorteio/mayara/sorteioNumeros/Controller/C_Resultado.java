@@ -29,10 +29,14 @@ public class C_Resultado {
             model.addAttribute("numeros", vetorNumerosRep);
             model.addAttribute("quantidade", quantidade);
             model.addAttribute("dataHora", new Date().toLocaleString());
+            model.addAttribute("faixaNumeros", inicio + " e " + fim);
             return "/resultado";
         } else {
             int[] vetorNumeros = S_Sortear.sortearNumeros(quantidade, inicio, fim, ordemCres);
             model.addAttribute("numeros", vetorNumeros);
+            model.addAttribute("quantidade", quantidade);
+            model.addAttribute("dataHora", new Date().toLocaleString());
+            model.addAttribute("faixaNumeros", inicio + " e " + fim);
             return "/resultado";
         }
 
