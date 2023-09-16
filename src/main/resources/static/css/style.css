@@ -1,0 +1,67 @@
+:root {
+  --bg-color: #c3ceac;
+
+}
+
+body {
+  background: var(--bg-color) !important;
+}
+
+p {
+  color: #ffffff;
+  font-family: Lato, sans-serif;
+  font-size: 1.5em;
+  margin: 0 10px 0 10px;
+}
+
+.container {
+  margin-top: 5%;
+}
+
+.mt-2 {
+  display: flex;
+  align-items: baseline;
+}
+
+#camposNumeros .mt-2,
+img .mt-2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#camposNumeros input {
+  min-width: 150px;
+  max-width: 140px;
+  width: 2ch;
+  box-shadow: 0px 0px 5px 2px #00000035;
+  border: 20px;
+  border-radius: 10px;
+}
+
+form {
+  width: 66%;
+  align-items: center;
+}
+.accordion-item, .btn{
+ box-shadow: 0px 0px 5px 2px #00000035;
+}
+.mx-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.btn {
+  margin-top: 5%;
+  margin-bottom: 5%;
+  background: rgb(24, 145, 60);
+  width: 100%;
+  color: #ffffff;
+  text-align: center;
+}
+
+
+
+
+
+
+
