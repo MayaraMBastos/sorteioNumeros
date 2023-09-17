@@ -9,7 +9,7 @@ import java.util.*;
 public class S_Sortear {
 
 
-    public static int[] sortearNumeros(int quantidade, int inicio, int fim, boolean ordenar) {
+    public static int[] sortearNumerosRepetidos(int quantidade, int inicio, int fim, boolean ordenar) {
         int[] vetorNumeros = new int[quantidade]; // Cria um vetor de tamanho 5 para armazenar os números sorteados
         Random random = new Random();
 

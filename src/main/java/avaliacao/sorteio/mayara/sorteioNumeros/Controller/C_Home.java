@@ -8,6 +8,6 @@ public class C_Home {
 
     @GetMapping("/")
     public String pagHome(){
-        return "/index.html";
+        return "/index";
     }
 }

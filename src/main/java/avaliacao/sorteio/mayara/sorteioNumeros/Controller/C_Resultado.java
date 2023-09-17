@@ -9,15 +9,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 
-
 import java.util.Date;
 
 @Controller
 public class C_Resultado {
 
-    @GetMapping("/resultado") // tirar o get para aparecer so quando clica no botao
+    @GetMapping("/resultado")
     public String pagResultado() {
-        return "/resultado.html";
+        return "/resultado";
     }
 
 
@@ -28,16 +27,21 @@ public class C_Resultado {
         model.addAttribute("dataHora", new Date().toLocaleString());
         model.addAttribute("faixaNumeros", inicio + " e " + fim);
 
-        if (repeticao == false) {
+        if (repeticao == false && quantidade <= fim) {
             int[] vetorNumerosRep = S_Sortear.sortearNumerosSemRepetir(quantidade, inicio, fim, ordemCres);
             model.addAttribute("numeros", vetorNumerosRep);
+            // model para mensagem de tipo de sorteio
+            return "/resultado";
+
+        } else if (repeticao == false && quantidade >= fim) {
+            int[] vetorNumeros = S_Sortear.sortearNumerosRepetidos(quantidade, inicio, fim, ordemCres);
+            model.addAttribute("numeros", vetorNumeros);
             return "/resultado";
         } else {
-            int[] vetorNumeros = S_Sortear.sortearNumeros(quantidade, inicio, fim, ordemCres);
+            int[] vetorNumeros = S_Sortear.sortearNumerosRepetidos(quantidade, inicio, fim, ordemCres);
             model.addAttribute("numeros", vetorNumeros);
             return "/resultado";
         }
-
 
     }
 
