@@ -27,6 +27,8 @@ public class C_Resultado {
         model.addAttribute("dataHora", new Date().toLocaleString());
         model.addAttribute("faixaNumeros", inicio + " e " + fim);
 
+        // enviar para o service e retornar um vetor
+        // model de resposta com o vetor retonardo
         if (repeticao == false && quantidade <= fim) {
             int[] vetorNumerosRep = S_Sortear.sortearNumerosSemRepetir(quantidade, inicio, fim, ordemCres);
             model.addAttribute("numeros", vetorNumerosRep);
