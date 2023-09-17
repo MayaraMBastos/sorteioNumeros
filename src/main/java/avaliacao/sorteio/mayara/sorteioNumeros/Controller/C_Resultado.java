@@ -24,21 +24,20 @@ public class C_Resultado {
     @PostMapping("/")
     public String listaNumeros(@RequestParam("quantidade") int quantidade, @RequestParam("inicio") int inicio, @RequestParam("fim") int fim, @RequestParam(name = "ordemCres", required = false, defaultValue = "false") boolean ordemCres, @RequestParam(name = "repeticao", required = false, defaultValue = "false") boolean repeticao, Model model) {
 
+        model.addAttribute("quantidade", quantidade);
+        model.addAttribute("dataHora", new Date().toLocaleString());
+        model.addAttribute("faixaNumeros", inicio + " e " + fim);
+
         if (repeticao == false) {
             int[] vetorNumerosRep = S_Sortear.sortearNumerosSemRepetir(quantidade, inicio, fim, ordemCres);
             model.addAttribute("numeros", vetorNumerosRep);
-            model.addAttribute("quantidade", quantidade);
-            model.addAttribute("dataHora", new Date().toLocaleString());
-            model.addAttribute("faixaNumeros", inicio + " e " + fim);
             return "/resultado";
         } else {
             int[] vetorNumeros = S_Sortear.sortearNumeros(quantidade, inicio, fim, ordemCres);
             model.addAttribute("numeros", vetorNumeros);
-            model.addAttribute("quantidade", quantidade);
-            model.addAttribute("dataHora", new Date().toLocaleString());
-            model.addAttribute("faixaNumeros", inicio + " e " + fim);
             return "/resultado";
         }
+
 
     }
 

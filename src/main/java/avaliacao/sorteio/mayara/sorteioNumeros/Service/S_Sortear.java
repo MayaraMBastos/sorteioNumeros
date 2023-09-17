@@ -2,9 +2,7 @@ package avaliacao.sorteio.mayara.sorteioNumeros.Service;
 
 
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.GetMapping;
 
-import java.lang.reflect.Array;
 import java.util.*;
 
 @Service
@@ -20,7 +18,7 @@ public class S_Sortear {
             vetorNumeros[i] = numeroSorteado;
         }
 
-        if (ordenar== true){
+        if (ordenar == true) {
             vetorNumeros = ordenarNumeros(vetorNumeros);
         }
 
@@ -47,10 +45,9 @@ public class S_Sortear {
             vetorNumeros[index++] = numero;
         }
 
-        if (ordenar == true){
-            vetorNumeros = ordenarNumeros(vetorNumeros);
+        if (ordenar == true) {
+          vetorNumeros = ordenarNumeros(vetorNumeros);
         }
-
 
 
         return vetorNumeros;
@@ -58,8 +55,7 @@ public class S_Sortear {
 
 
     public static int[] ordenarNumeros(int[] numerosOrdenados) {
-        Arrays.sort(numerosOrdenados); // Ordena a lista em ordem crescente
-
+        Arrays.sort(numerosOrdenados);
         return numerosOrdenados;
     }
 
