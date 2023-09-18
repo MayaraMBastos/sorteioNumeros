@@ -13,15 +13,10 @@ public class S_Sortear {
 
         if (repeticao == false) { // if sem repetir numeros
 
-//            if (quantidade > fim) { // quantidade nao deve ser maior que o limite: erro 500
-//                throw new IllegalArgumentException(
-//                        "A quantidade de números a serem sorteados não pode ser maior que o limite.");
-//            }
-
             Set<Integer> numerosSorteados = new HashSet<>();
 
             while (numerosSorteados.size() < quantidade) {
-                //int numeroSorteado = random.nextInt(fim) + inicio; // Gera um número aleatório entre 1 e o limite
+
                 int numeroSorteado = random.nextInt(fim - inicio + 1) + inicio;
                 numerosSorteados.add(numeroSorteado);
             }
@@ -30,10 +25,10 @@ public class S_Sortear {
             for (int numero : numerosSorteados) {
                 vetorNumeros[index++] = numero;
             }
-        } else { // senao pode repetir numeros
+        } else { // senao, pode repetir numeros
 
             for (int i = 0; i < quantidade; i++) {
-                //int numeroSorteado = random.nextInt(fim) + inicio;// Gera um número aleatório de 1 a 100
+
                 int numeroSorteado = random.nextInt(fim - inicio + 1) + inicio;
                 vetorNumeros[i] = numeroSorteado;
             }
@@ -46,8 +41,8 @@ public class S_Sortear {
         return vetorNumeros;
     }
 
-    public static int[] ordenarNumeros(int[] numerosOrdenados) {
-         return Arrays.stream(numerosOrdenados).sorted().toArray();
+    public static int[] ordenarNumeros(int[] numerosOrdenados) { // metodo de ordenacao stream
+        return Arrays.stream(numerosOrdenados).sorted().toArray();
     }
 
 }

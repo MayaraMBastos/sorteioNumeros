@@ -7,13 +7,17 @@ $(document).ready(function () {
     var ordemCres = $("#ordemCres").is(":checked");
     var repeticao = $("#repeticao").is(":checked");
 
-    $("#errorMessage").text("");
+    $("#errorMessage").hide();
 
-    if (quantidade >= fim) {
-      $("#errorMessage").append(
-        "A quantidade de números não pode ser maior que o limite para o sorteio sem repetição de números"
-      );
+    var faixa = fim - inicio;
+    if (quantidade >= faixa && repeticao == false) {
+      $("#errorMessage").show();
+      $("#errorMessage").append("A quantidade de números não pode ser maior que o limite para o sorteio sem repetição de números");
       podeEnviar = false;
+
+    } else {
+      $("#errorMessage").text("");
+      podeEnviar = true;
     }
 
     if (podeEnviar) {
@@ -29,17 +33,15 @@ $(document).ready(function () {
         },
         success: function (data) {
           if (data.sucesso) {
-          $("#errorMessage").text("");
             window.location.href = "/resultado";
           } else {
-
             $("#errorMessage").append("Ops! Ocorreu um erro inesperado.");
           }
         },
         error: function () {
-          $("#errorMessage").append("Ops! Ocorreu um erro inesperado.");
+          $("#errorMessage").append("Ops! Ocorreu um erro no servidor.");
         },
       });
-    } //
+    }
   });
 });
