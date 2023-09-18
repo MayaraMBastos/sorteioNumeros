@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="UTF-8" />
     <link
@@ -24,11 +24,13 @@
   </head>
 
   <body>
+
     <div class="container text-center">
-      <p id="errorMessage" class="mt-5"></p>
       <img src="imagens/logoSorteio.png" />
 
-      <form action="/" method="post" class="text-center mx-auto">
+      <form action="/" method="post" id="formulario" class="text-center mx-auto">
+
+        <p id="errorMessage" class=" bg-danger mx-auto"></p>
         <div class="text-center mt-5 mb-5 font-lato" id="camposNumeros">
           <div class="mt-2">
             <p>Sortear</p>
@@ -40,7 +42,7 @@
               min="1"
               value="1"
             />
-            <p>número</p>
+            <p>números</p>
           </div>
           <div class="mt-2">
             <p>entre</p>

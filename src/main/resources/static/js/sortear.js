@@ -7,10 +7,11 @@ $(document).ready(function () {
     var ordemCres = $("#ordemCres").is(":checked");
     var repeticao = $("#repeticao").is(":checked");
 
-    if (quantidade >= fim) {
     $("#errorMessage").text("");
+
+    if (quantidade >= fim) {
       $("#errorMessage").append(
-        "A quantida não pode ser maior que o fim para o sorteio sem repetiçao de numeros"
+        "A quantidade de números não pode ser maior que o limite para o sorteio sem repetição de números"
       );
       podeEnviar = false;
     }
@@ -27,10 +28,11 @@ $(document).ready(function () {
           repeticao: repeticao,
         },
         success: function (data) {
-          $("#errorMessage").text("");
           if (data.sucesso) {
+          $("#errorMessage").text("");
             window.location.href = "/resultado";
           } else {
+
             $("#errorMessage").append("Ops! Ocorreu um erro inesperado.");
           }
         },

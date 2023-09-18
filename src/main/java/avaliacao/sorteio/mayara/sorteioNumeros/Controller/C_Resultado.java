@@ -1,13 +1,14 @@
 package avaliacao.sorteio.mayara.sorteioNumeros.Controller;
 
-
 import avaliacao.sorteio.mayara.sorteioNumeros.Service.S_Sortear;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.Date;
 
@@ -19,31 +20,20 @@ public class C_Resultado {
         return "/resultado";
     }
 
-
     @PostMapping("/")
-    public String listaNumeros(@RequestParam("quantidade") int quantidade, @RequestParam("inicio") int inicio, @RequestParam("fim") int fim, @RequestParam(name = "ordemCres", required = false, defaultValue = "false") boolean ordemCres, @RequestParam(name = "repeticao", required = false, defaultValue = "false") boolean repeticao, Model model) {
+    public String listaNumeros(@RequestParam("quantidade") int quantidade,
+            @RequestParam("inicio") int inicio,
+            @RequestParam("fim") int fim,
+            @RequestParam(name = "ordemCres", required = false, defaultValue = "false") boolean ordemCres,
+            @RequestParam(name = "repeticao", required = false, defaultValue = "false") boolean repeticao,
+            Model model, RedirectAttributes redirectAttributes, HttpSession session) {
 
+        int[] vResultado = S_Sortear.sortearNumeros(quantidade, inicio, fim, ordemCres, repeticao);
+        model.addAttribute("numeros", vResultado);
         model.addAttribute("quantidade", quantidade);
         model.addAttribute("dataHora", new Date().toLocaleString());
         model.addAttribute("faixaNumeros", inicio + " e " + fim);
-
-        // enviar para o service e retornar um vetor
-        // model de resposta com o vetor retonardo
-        if (repeticao == false && quantidade <= fim) {
-            int[] vetorNumerosRep = S_Sortear.sortearNumerosSemRepetir(quantidade, inicio, fim, ordemCres);
-            model.addAttribute("numeros", vetorNumerosRep);
-            // model para mensagem de tipo de sorteio
-            return "/resultado";
-
-        } else if (repeticao == false && quantidade >= fim) {
-            int[] vetorNumeros = S_Sortear.sortearNumerosRepetidos(quantidade, inicio, fim, ordemCres);
-            model.addAttribute("numeros", vetorNumeros);
-            return "/resultado";
-        } else {
-            int[] vetorNumeros = S_Sortear.sortearNumerosRepetidos(quantidade, inicio, fim, ordemCres);
-            model.addAttribute("numeros", vetorNumeros);
-            return "/resultado";
-        }
+        return "/resultado";
 
     }
 
