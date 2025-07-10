@@ -30,13 +30,23 @@ img .mt-2 {
   justify-content: center;
 }
 #camposNumeros input {
-  min-width: 150px;
+  min-width: 100px;
   max-width: 140px;
   width: 2ch;
   box-shadow: 0px 0px 5px 2px #00000035;
   border: 20px;
   border-radius: 10px;
 }
+
+  input[type=number]::-webkit-inner-spin-button,
+  input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  input[type=number] {
+    -moz-appearance: textfield;
+  }
 
 form {
   width: 66%;
