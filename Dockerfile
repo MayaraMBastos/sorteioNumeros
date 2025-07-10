@@ -1,16 +1,17 @@
-FROM ubuntu:latest AS build
+# Etapa de build
+FROM eclipse-temurin:21-jdk AS build
 
-RUN apt-get update
-RUN apt-get install openjdk-21.0.6-jdk -y
+WORKDIR /app
 COPY . .
 
-RUN apt-get install maven -y
+RUN apt-get update && apt-get install -y maven
 RUN mvn clean install
 
-FROM openjdk:21.0.6-jdk
+# Etapa de execução
+FROM eclipse-temurin:21-jdk
+
+WORKDIR /app
+COPY --from=build /app/target/sorteioNumeros-0.0.1-SNAPSHOT.jar sorteio.jar
 
 EXPOSE 8080
-
-COPY --from=build /target/sorteioNumeros-0.0.1-SNAPSHOT.jar sorteio.jar
-
 ENTRYPOINT ["java", "-jar", "sorteio.jar"]
