@@ -14,9 +14,9 @@ import java.util.Date;
 @Controller
 public class C_Resultado {
 
-    @GetMapping("/resultado")
+    @GetMapping("resultado")
     public String pagResultado() {
-        return "/resultado";
+        return "resultado";
     }
 
     @PostMapping("/")
